@@ -4,8 +4,8 @@ This is a basic e-commerce project built with **ReactJS** and **Vite**. It allow
 
 ## Live Demo
 You can visit the live version of the app here:
--   **Gh-pages**: [Basic E-Commerce](https://resplendent-dragon-8821e4.netlify.app/)
--   **Netlify**: [Basic E-Commerce](https://cachaucanes.github.io/Basic-E-commerce/)
+-   **Gh-pages**: [Basic E-Commerce](https://cachaucanes.github.io/Basic-E-commerce/)
+-   **Netlify**: [Basic E-Commerce](https://resplendent-dragon-8821e4.netlify.app/)
 
 ## Technologies Used
 
