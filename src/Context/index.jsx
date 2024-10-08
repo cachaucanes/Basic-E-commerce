@@ -74,7 +74,7 @@ export const ProviderShoppingCard = ({ children }) => {
 
   useEffect(() => {
     async function getProducts() {
-      const response = await fetch(`${API}/products`, { mode: 'no-cors',});
+      const response = await fetch(`${API}/products`);
       const data = await response.json();
       setProducts(data);
     }
