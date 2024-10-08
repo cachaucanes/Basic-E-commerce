@@ -2,6 +2,11 @@
 
 This is a basic e-commerce project built with **ReactJS** and **Vite**. It allows users to list products, view specific product details, add products to the cart, place orders, and view the order history.
 
+## Live Demo
+You can visit the live version of the app here:
+-   **Gh-pages**: [Basic E-Commerce](https://resplendent-dragon-8821e4.netlify.app/)
+-   **Netlify**: [Basic E-Commerce](https://cachaucanes.github.io/Basic-E-commerce/)
+
 ## Technologies Used
 
 -   **ReactJS**: A JavaScript library for building user interfaces.
