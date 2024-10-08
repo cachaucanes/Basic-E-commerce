@@ -1,5 +1,5 @@
 //Primero todo lo de react
-import { useRoutes, BrowserRouter } from "react-router-dom";
+import { useRoutes, BrowserRouter, HashRouter } from "react-router-dom";
 //Segundo las paginas
 import Home from "../Home";
 import MyAccount from "../MyAccount";
@@ -41,10 +41,10 @@ const AppRoutes = () => {
 const App = () => {
   return (
     <ProviderShoppingCard>
-      <BrowserRouter>
+      <HashRouter>
         <Navbar />
         <AppRoutes />
-      </BrowserRouter>
+      </HashRouter>
     </ProviderShoppingCard>
   );
 };
