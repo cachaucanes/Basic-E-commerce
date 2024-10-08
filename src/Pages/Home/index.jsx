@@ -54,7 +54,7 @@ function Home() {
           value={context.searchByTitle}
           onChange={handleChange}
         />
-        <select value={context.category} onChange={handleChangeCategory} name="" id="">
+        <select className="capitalize" value={context.category} onChange={handleChangeCategory} name="" id="">
           <option value=''>Select Category</option>
           {
           context.productsCategory.map(item => (

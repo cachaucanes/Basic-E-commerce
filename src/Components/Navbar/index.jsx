@@ -16,8 +16,8 @@ const ItemNav = (item) => {
       <NavLink
         to={item.to}
         onClick={() => item.filter && item.context.setCategory(textofilter)}
-        className={({ isActive }) =>
-          isActive ? "underline underline-offset-8" : ""
+        className={`capitalize ${({ isActive }) =>
+          isActive ? "underline underline-offset-8" : ""}`
         }
       >
         {item.name}
@@ -64,7 +64,7 @@ const Navbar = () => {
         {itemsRight.map((item, index) => (
           <ItemNav {...item} key={index} context={context} />
         ))}
-        <li className="text-black/60 flex items-center">
+        <li onClick={context.openCheckoutSideMenu} className="text-black/60 flex items-center cursor-pointer">
           <ShoppingBagIcon className="h-6 w-6" />
           {context.cartProducts.length}
         </li>

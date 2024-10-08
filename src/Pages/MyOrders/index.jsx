@@ -14,6 +14,7 @@ function MyOrders() {
         <div className="flex items-center justify-center w-90 relative mb-6">          
           <h1 className="text-3xl font-bold ">My Orders</h1>
         </div>
+        {context.order.length < 1 && (<p>No orders yet, add to cart</p>)}
         {context.order.map((order, i) => (
           <Link to={`/my-order/${i}`} key={i} className="w-96">
             <OrdersCard {...order} />

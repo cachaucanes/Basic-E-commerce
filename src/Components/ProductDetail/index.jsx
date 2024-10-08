@@ -22,7 +22,7 @@ const ProductDetail = () => {
           alt={context.productShow.title}
         />
       </figure>
-      <p className="flex flex-col p-6">
+      <p className="flex flex-col p-6 overflow-y-scroll">
         <span className="font-medium text-2xl mb-2">${context.productShow.price}</span>
         <span className="font-medium text-md">{context.productShow.title}</span>
         <span className="font-light text-sm">{context.productShow.description}</span>

@@ -25,6 +25,7 @@ const AppRoutes = () => {
     { path: "/tshirt", element: <Home /> },
     { path: "/phone", element: <Home /> },        
     { path: "/furniture", element: <Home /> },        
+    { path: "/nuevo", element: <Home /> },        
 
     { path: "/Others", element: <Home /> },
     { path: "/my-account", element: <MyAccount /> },

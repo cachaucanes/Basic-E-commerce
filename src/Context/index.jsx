@@ -90,7 +90,7 @@ export const ProviderShoppingCard = ({ children }) => {
     return products.filter((item) => {      
       if (_category) {
         if (
-          item.category.name === _category &&
+          item.category.name.toLowerCase() === _category.toLowerCase() &&
           item.title.toLowerCase().includes(searchByTitle.toLowerCase())
         ) {
           return true;
