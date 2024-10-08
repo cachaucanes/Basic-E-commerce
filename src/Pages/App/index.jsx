@@ -14,6 +14,7 @@ import { ProviderShoppingCard } from "../../Context";
 const AppRoutes = () => {
   let routes = useRoutes([
     { path: "/", element: <Home /> },
+    { path: "/Basic-E-commerce", element: <Home /> },
     { path: "/clothes", element: <Home /> },
     { path: "/electronics", element: <Home /> },
     { path: "/furnitures", element: <Home /> },
