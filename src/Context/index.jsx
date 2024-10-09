@@ -4,6 +4,29 @@ import { totalPrice } from "../utils";
 export const ContextShoppingCard = createContext();
 
 export const ProviderShoppingCard = ({ children }) => {
+  //Init account and signIn
+  const [signOutState, setSignOutState] = useState(false);
+  const [accountState, setAccountState] = useState({});
+  const signOut = localStorage.getItem("sign-out");
+  const account = localStorage.getItem("account");
+
+  if (!signOut || !account) {    
+    localStorage.setItem("account", JSON.stringify({}));
+    localStorage.setItem("sign-out", JSON.stringify(false));
+  }
+
+  const handleSingOut = () => {
+    localStorage.setItem("sign-out", JSON.stringify(true))
+    setSignOutState(true)
+  }
+
+  useEffect(() => {
+    if (signOut || account) {
+      setSignOutState(JSON.parse(signOut));
+      setAccountState(JSON.parse(account));
+    }
+  }, []);
+
   //Product detail - Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const openProductDetail = () => {
@@ -81,13 +104,12 @@ export const ProviderShoppingCard = ({ children }) => {
     getProducts();
   }, []);
 
-
   // Get products by title
   const [searchByTitle, setSearchByTitle] = useState("");
   const [category, setCategory] = useState("");
 
   const filteredItemsByTitle = (products, searchByTitle, _category) => {
-    return products.filter((item) => {      
+    return products.filter((item) => {
       if (_category) {
         if (
           item.category.name.toLowerCase() === _category.toLowerCase() &&
@@ -132,6 +154,9 @@ export const ProviderShoppingCard = ({ children }) => {
         setCategory,
         category,
         productsCategory,
+        signOutState,
+        accountState,
+        handleSingOut
       }}
     >
       {children}

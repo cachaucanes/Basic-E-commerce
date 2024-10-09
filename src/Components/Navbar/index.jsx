@@ -15,7 +15,14 @@ const ItemNav = (item) => {
     <li>
       <NavLink
         to={item.to}
-        onClick={() => item.filter && item.context.setCategory(textofilter)}
+        onClick={() => {
+          if(item.filter){
+            item.context.setCategory(textofilter)
+          }
+          else if(item.onClick){
+            item.onClick()
+          }
+        }}
         className={`capitalize ${({ isActive }) =>
           isActive ? "underline underline-offset-8" : ""}`
         }
@@ -33,10 +40,17 @@ const Navbar = () => {
     filter: true,
   }));
 
+  const isAuth = () => {
+    if(!context.signOutState) return { name: "SignOut", to: "/sign-in",  onClick: () => context.handleSingOut() }
+    return { name: "SignIn", to: "/sign-in"}
+  }
+
   const itemsRight = [
     { name: "My Orders", to: "/my-orders" },
     { name: "My Account", to: "/my-account" },
-    { name: "SignIn", to: "/sign-in" },
+    isAuth(),
+    
+    
   ];
   return (
     <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light top-0 bg-white">
