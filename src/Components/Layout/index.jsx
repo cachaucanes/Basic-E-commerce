@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Layout({children}) {
+function Layout({children, classDefault='mt-20'}) {
   return (
-    <div className='flex flex-col items-center mt-20'>
+    <div className={`flex flex-col items-center ${classDefault}`}>
         {children}
     </div>
   )

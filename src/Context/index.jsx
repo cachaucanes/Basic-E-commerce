@@ -6,19 +6,58 @@ export const ContextShoppingCard = createContext();
 export const ProviderShoppingCard = ({ children }) => {
   //Init account and signIn
   const [signOutState, setSignOutState] = useState(false);
-  const [accountState, setAccountState] = useState({});
+  const initialStateAccount = {
+    username: "",
+    email: "",
+    password: "",
+    country: "colombia",
+  };
+  const [accountState, setAccountState] = useState(initialStateAccount);
   const signOut = localStorage.getItem("sign-out");
   const account = localStorage.getItem("account");
+  const [errorLogIn, setErrorLogIn] = useState("");
 
-  if (!signOut || !account) {    
-    localStorage.setItem("account", JSON.stringify({}));
-    localStorage.setItem("sign-out", JSON.stringify(false));
+  if (!signOut || !account) {
+    localStorage.setItem("account", JSON.stringify(initialStateAccount));
+    localStorage.setItem("sign-out", JSON.stringify(true));
   }
 
   const handleSingOut = () => {
-    localStorage.setItem("sign-out", JSON.stringify(true))
-    setSignOutState(true)
-  }
+    localStorage.setItem("sign-out", JSON.stringify(true));
+    setSignOutState(true);
+  };
+  const handleSingUp = (account_) => {
+    localStorage.setItem("account", JSON.stringify(account_));
+    localStorage.setItem("sign-out", JSON.stringify(false));
+    setAccountState(account_);
+    setSignOutState(false);
+    setErrorLogIn("");
+  };
+
+  const handleLogIn = (data, navigate) => {
+    const accountLocalStorage = localStorage.getItem("account");
+    if (!accountLocalStorage) {
+      setErrorLogIn("The email is not registered.");
+      return false;
+    }
+
+    const parseAccount = JSON.parse(accountLocalStorage);
+    if (data.email.toLowerCase() === parseAccount.email.toLowerCase()) {
+      if (data.password === parseAccount.password) {
+        setSignOutState(false);
+        setErrorLogIn("");
+        localStorage.setItem("sign-out", JSON.stringify(false));
+        setSignOutState(false);
+        navigate("/");
+      } else {
+        setErrorLogIn("The password is incorrect.");
+        return false;
+      }
+    } else {
+      setErrorLogIn("The email is not registered.");
+      return false;
+    }
+  };
 
   useEffect(() => {
     if (signOut || account) {
@@ -156,7 +195,11 @@ export const ProviderShoppingCard = ({ children }) => {
         productsCategory,
         signOutState,
         accountState,
-        handleSingOut
+        setAccountState,
+        handleSingOut,
+        handleSingUp,
+        handleLogIn,
+        errorLogIn,
       }}
     >
       {children}

@@ -41,13 +41,13 @@ const Navbar = () => {
   }));
 
   const isAuth = () => {
-    if(!context.signOutState) return { name: "SignOut", to: "/sign-in",  onClick: () => context.handleSingOut() }
-    return { name: "SignIn", to: "/sign-in"}
+    if(!context.signOutState) return { name: "SignOut", to: "/sign-in",  onClick: () => context.handleSingOut(), hide:false }
+    return { name: "SignIn", to: "/sign-in", hide: false}
   }
 
   const itemsRight = [
-    { name: "My Orders", to: "/my-orders" },
-    { name: "My Account", to: "/my-account" },
+    { name: "My Orders", to: "/my-orders", hide: context.signOutState },
+    { name: "My Account", to: "/my-account", hide: context.signOutState},
     isAuth(),
     
     
@@ -74,10 +74,8 @@ const Navbar = () => {
         ))}
       </ul>
       <ul className="flex items-center  gap-3">
-        <li className="text-black/60">cachauca@gmail.com</li>
-        {itemsRight.map((item, index) => (
-          <ItemNav {...item} key={index} context={context} />
-        ))}
+        {!context.signOutState && <li className="text-black/60">{context.accountState.email}</li>}
+        {itemsRight.map((item, index) => !item.hide && (<ItemNav {...item} key={index} context={context} />))}
         <li onClick={context.openCheckoutSideMenu} className="text-black/60 flex items-center cursor-pointer">
           <ShoppingBagIcon className="h-6 w-6" />
           {context.cartProducts.length}
