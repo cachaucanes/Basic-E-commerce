@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ContextShoppingCard } from "../../Context";
-import { ShoppingBagIcon } from "@heroicons/react/16/solid";
+import { ShoppingCart } from "../ShoppingCart";
 
 const toUpperOrLower = (lowerOrUpper, item) => {
   const textofilter = `${item.slice(0, 1)[lowerOrUpper]()}${item.slice(1)}`;
@@ -23,9 +23,8 @@ const ItemNav = (item) => {
             item.onClick()
           }
         }}
-        className={`capitalize ${({ isActive }) =>
-          isActive ? "underline underline-offset-8" : ""}`
-        }
+        className={({ isActive }) =>
+          isActive ? "underline underline-offset-8 capitalize" : "capitalize"}
       >
         {item.name}
       </NavLink>
@@ -56,7 +55,7 @@ const Navbar = () => {
     <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light top-0 bg-white">
       <ul className="flex items-center gap-3">
         <li className="font-semibold text-lg">
-          <NavLink to="/">Shopi</NavLink>
+          <NavLink style={{textDecoration: 'none'}} to="/">Shopi</NavLink>
         </li>
         <li>
           <NavLink
@@ -76,10 +75,7 @@ const Navbar = () => {
       <ul className="flex items-center  gap-3">
         {!context.signOutState && <li className="text-black/60">{context.accountState.email}</li>}
         {itemsRight.map((item, index) => !item.hide && (<ItemNav {...item} key={index} context={context} />))}
-        <li onClick={context.openCheckoutSideMenu} className="text-black/60 flex items-center cursor-pointer">
-          <ShoppingBagIcon className="h-6 w-6" />
-          {context.cartProducts.length}
-        </li>
+        <ShoppingCart/>
       </ul>
     </nav>
   );

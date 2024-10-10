@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputForm = ({ label, name, value, handleChange, type='text' }) => {
+const InputForm = ({ label, name, value, handleChange, type='text', icon=false }) => {
   return (
     <>
       <label
@@ -9,7 +9,7 @@ const InputForm = ({ label, name, value, handleChange, type='text' }) => {
       >
         {label}
       </label>
-      <div className="mt-2">
+      <div className={`mt-2 ${icon && 'relative'}`}>
         <input
           id={name}
           name={name}
@@ -19,7 +19,7 @@ const InputForm = ({ label, name, value, handleChange, type='text' }) => {
           value={value}
           onChange={handleChange}
         />
-        
+        {icon && icon}
       </div>
     </>
   );
