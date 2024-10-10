@@ -22,6 +22,9 @@ You can visit the live version of the app here:
 4.  **Shopping Cart**: Add and remove products from the cart.
 5.  **Order Placement**: Orders are recorded once the checkout is completed.
 6.  **Order History**: View all previously placed orders.
+7.  **Authenticate**: user authentication.
+8.  **My Account**: Add module 'My Account' with personal information.
+
 
 ## Installation and Setup
 
@@ -58,8 +61,6 @@ Follow these steps to install and run the project locally:
 
 ## Future Enhancements
 
--   Add user authentication.
--   Add module 'My Account'
 -   Enhance user experience with animations.
 
 ## Contributions
