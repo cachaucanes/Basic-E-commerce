@@ -67,7 +67,7 @@ function SignIn() {
                   </div>
                 </div>
                 <button
-                  className="bg-black text-white py-3 w-full rounded-md mt-8"   
+                  className={` text-white py-3 w-full rounded-md mt-8 ${(!!context.accountState.email || !!context.accountState.password) ? 'bg-black' : 'cursor-not-allowed bg-black/30' }`}   
                   type="submit"               
                 >
                   Log in

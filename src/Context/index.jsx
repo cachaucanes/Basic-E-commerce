@@ -35,8 +35,14 @@ export const ProviderShoppingCard = ({ children }) => {
   };
 
   const handleLogIn = (data, navigate) => {
+
+    if(!data.email || !data.password) {
+      setErrorLogIn("Fill in the fields.");
+      return false;
+    }
+
     const accountLocalStorage = localStorage.getItem("account");
-    if (!accountLocalStorage) {
+    if (!accountLocalStorage?.email) {
       setErrorLogIn("The email is not registered.");
       return false;
     }
