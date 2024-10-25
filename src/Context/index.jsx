@@ -35,19 +35,19 @@ export const ProviderShoppingCard = ({ children }) => {
   };
 
   const handleLogIn = (data, navigate) => {
-
-    if(!data.email || !data.password) {
+    if (!data.email || !data.password) {
       setErrorLogIn("Fill in the fields.");
       return false;
     }
 
-    const accountLocalStorage = localStorage.getItem("account");
-    if (!accountLocalStorage?.email) {
+    let accountLocalStorage = localStorage.getItem("account");
+    const parseAccount = JSON.parse(accountLocalStorage);
+
+    if (!parseAccount?.email) {
       setErrorLogIn("The email is not registered.");
       return false;
     }
 
-    const parseAccount = JSON.parse(accountLocalStorage);
     if (data.email.toLowerCase() === parseAccount.email.toLowerCase()) {
       if (data.password === parseAccount.password) {
         setSignOutState(false);
